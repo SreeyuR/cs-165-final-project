@@ -458,7 +458,7 @@ def save_load_datasets(tp, force_reload=False, save=True):
     
     config = tp.config #load_config(config_folder="config", config_file=tp.config_file_path, config_name="default", verbose=True)
     
-    # 1. SCALE DATASETS
+    # 0. GET DATASET INDICES
     if tp.config.data.case_number == 6:
         dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_6"
     elif tp.config.data.case_number == 8:
@@ -471,19 +471,12 @@ def save_load_datasets(tp, force_reload=False, save=True):
         dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_2"
     elif tp.config.data.case_number == 3:
         dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_3"
-    elif tp.config.data.case_number == 80:
-        dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_80"
-    # if tp.config.data.scaling_type == "none":
-    #     dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/no_scale"
-    # elif tp.config.data.scaling_type == "standard":
-    #     dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/standard_scale"
-    # elif tp.config.data.scaling_type == "robust":
-    #     dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/robust_scale"
     else:
         raise ValueError(f"Unknown case number: {tp.config.data.case_number}")
         
     os.makedirs(dataset_dir, exist_ok=True)  # Ensure directory exists
-    
+
+    # 1. SCALE DATASETS
     if tp.config.data.scaling_type == "none":
         dataset_dir = f"/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_{tp.config.data.case_number}/no_scale"
     elif tp.config.data.scaling_type == "standard":
@@ -516,7 +509,6 @@ def save_load_datasets(tp, force_reload=False, save=True):
         torch.save(train_dataset, dataset_paths["train"])
         torch.save(test_dataset, dataset_paths["test"])
         torch.save(val_dataset, dataset_paths["val"])
-        #torch.save(eval_dataset, dataset_paths["eval"])
         print("Datasets saved successfully!")
     else:
         print("------------------------------------------------------------")
@@ -554,7 +546,6 @@ def save_load_datasets(tp, force_reload=False, save=True):
         "east": data_params.tau_east,
     }
     data_processing_args = {
-        # "dataset": self.load_raw_data(),
         "end_cutoff_timesteps": data_params.end_cutoff_timesteps,
         "machine_hyperparameters": machine_hyperparameters,
         "dataset_type": data_params.dataset_type,
@@ -574,14 +565,6 @@ def save_load_datasets(tp, force_reload=False, save=True):
         "undersample": config.balance_classes.undersample,
         "undersample_ratio": config.balance_classes.undersample_ratio
     }
-    
-    # Get hist BEFORE applying any dataset transformations
-    # NOTE: Running this here for some reason makes all the datasets empty so remove it from this
-    # file and move it somewhere else!
-    # datasets = [train_dataset, test_dataset, val_dataset]
-    # for dataset, name in zip(datasets, ['TRAIN', 'TEST', 'VAL']):    
-    #     printing.plot_sequence_histogram_by_interval(dataset, name, data_params.case_number)
-    
     
     # 2. AUGMENT DATASETS
     if data_processing_args["data_augmentation_windowing"] and config.data.dataset_type == "seq_to_label":
