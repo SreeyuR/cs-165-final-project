@@ -1,0 +1,108 @@
+default: &DEFAULT
+
+  # Weights and biases
+  wandb:
+    log: False
+    name: "Test-FNO-d3d" #"Test-transformer" # If None, config will be used but you can override it here # TODO Changethis
+    group: "fno" #"transformer-test" # TODO Change this
+    project: "FNO-Disruption-Prediction"
+    files_to_save:
+      - "/groups/tensorlab/sratala/fno-disruption-pred/data.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/main.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/evaluation.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/model_params.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/model_types.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/model.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/plotting.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/printing.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/seq_to_label.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/seq_to_seq.py"
+      - "/groups/tensorlab/sratala/fno-disruption-pred/utils.py"
+  
+  optuna: 
+    use_optuna: False
+    wandb_log: False
+    num_trials: 15 # TODO Chage this 
+    num_jobs: 1
+
+  seed: 50 # 42
+
+  # Training Parameters
+  training:
+    epochs: 300 #500 # TODO Change this
+    save_checkpoint: True
+    model_type: "fno"
+    testing_for_debugging: False
+    batch_size: 32 #64
+    # for learing rate scheduler
+    learning_rate_scheduler_target: 0.01571650939674816 #0.042449823832388406 # 1e-4
+    learning_rate_adam: 0.0027879941328230557 # 0.0678114202550207
+    learning_rate_init: 0.0000361123847052482 #0.0003367535542580644 # warmup
+    warmup_steps: 17
+    lr_scheduler_type: "StepLR" #"linear"
+    step_size: 23 # 40 was not so good, go lower. 20 best for 100 epochs
+    gamma: 0.637636244800388 #0.676284073205403
+    # for adam optimizer
+    adam_weight_decay: 0.00000722578118014066
+    adam_beta1: 0.9
+    adam_beta2: 0.999
+    adam_eps: 1e-8
+    # for FNO model
+    curriculum_steps: 0
+    mlp_dropout: 0.14082885576657564 
+    n_modes: 3 #16
+    hidden_channels: 38 #36
+    n_layers: 4
+    addl_metric: False
+    reg_to_class: # from regression to classification
+      threshold: 0.6
+      softmax_before_mean: False # if False, the softmax is done after mean
+
+  balance_classes:
+    balanced_loss: True
+    pos_weight_emphasis_factor: 3.285783212308459 #1.5 will weight disruptions more than ratio; see if undersampling makes is enough first.
+    undersample: True
+    undersample_ratio: 2.444809064295149 #2.0 number of times there are MORE non-disruptions than disruptions
+    data_augmentation_windowing: False 
+    # Ratio of augmented data to original data.
+    data_augmentation_ratio: 2
+    disruptivity_distance_window_length: 8 # for sliding window
+
+  # Dataset related Parameters
+  data:
+    filename: "Full_HDL_dataset_unnormalized_no_nan_column_names_w_shot_and_time.pickle"
+    folder: "" #"tokamak/Transformers-Plasma-Disruption-Prediction-autoformer/Model_training"
+    dataset_type: "seq_to_label" #"state"
+    max_length: 2048
+    scaling_type: "standard" #"robust" "none"
+    # used to determine deterministic label of shots with probabilistic label
+    cmod_hyperparameter_non_disruptions: 0.1
+    cmod_hyperparameter_disruptions: 0.9
+    d3d_hyperparameter_non_disruptions: 0.1
+    d3d_hyperparameter_disruptions: 0.9
+    east_hyperparameter_non_disruptions: 0.05
+    east_hyperparameter_disruptions: 0.92
+    end_cutoff_timesteps: 8 #8 # microseconds
+    end_cutoff_timesteps_test: 8
+    case_number: 1 # train on all three tokamaks and test on just cmod
+    tau_cmod: 12 # TODO: ASK: Is this a time constant associated with tokamak?
+    tau_d3d: 35
+    tau_east: 75
+    standardize_disruptivity_plot_length: False
+    use_smoothed_tau: True
+    data_context_length: 100
+    fix_sampling: True # equal spaced timesteps, but can vary across machines
+    standardize_sampling_rate: False # whether to force all machines to have same sampling rate for each timestep. If true, resample rate defaults to .005
+    smooth_v_loop: True
+    v_loop_smoother: 10
+    uniform_seq_length: True
+    probabilistic_labels: True
+    delta_t: 150  # uniform sequence length, only used if uniform_seq_length is True
+
+  # Evaluation Parameters
+  eval:
+    eval_high_thresh: 0.8
+    eval_low_thresh: 0.5
+    eval_hysteresis: 2
+    sweep_id: None
+    unrolled_smoothing: 10

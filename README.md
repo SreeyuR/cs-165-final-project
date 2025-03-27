@@ -46,6 +46,8 @@ In the full dataset, **non-disruptive shots outnumber disruptive ones** by a rat
 
 ## Data Preprocessing
 
+<img src="images/data.png" alt="Data preprocessing" width="500"/>
+
 The preprocessing pipeline includes two stages: **global preprocessing (before train-test split)** and **per-run preprocessing (after data is loaded for a specific experiment)**.
 
 ### Global Preprocessing
@@ -151,23 +153,31 @@ These preprocessing and filtering steps were designed to:
 
 Follow these steps to set up and run the models for the project.
 
-## 1. Clone the Repository
+### 1. Clone the Repository
 
 First, clone the GitHub repository:
 
 ```bash
 git clone https://github.com/SreeyuR/cs-165-final-project.git
 cd cs-165-final-project
-```
-## 2. Now run the following command to update hardcoded paths in the project, replacing `/new/user/global/path/` with the full global path to your local project directory.
+````
+
+### 2. Now run the following command to update hardcoded paths in the project, replacing `/new/user/global/path/` with the full global path to your local project directory.
 ```bash
 python replace_path.py /path/to/project "/groups/tensorlab/sratala/fno-disruption-pred/" "/new/user/global/path/"
 ```
+Setup environment:
 
-## 3. Download dataset into the project direcotry using this link: 
+```bash
+conda create -n myenv python=3.9
+conda activate myenv
+pip install -r requirements.txt
+```
+
+### 3. Download dataset into the project direcotry using this link: 
 https://drive.google.com/uc?export=download&id=1GE2odcanPqnufBQVrBOVlbyY7Rh59Au0
 
-## 4. Run an Experiment
+### 4. Run an Experiment
 To run a specific experiment, use sbatch (or bash) to execute one of the job scripts in the bash_jobs/ directory. For example:
 ```bash
 sbatch bash_jobs/run_fno_experiment.sh
@@ -177,7 +187,7 @@ Or if you’re running it directly without a job scheduler:
 bash bash_jobs/run_fno_experiment.sh
 ```
 
-Notes about the models and naming conventions:
+### Notes about the models and naming conventions:
 
 - Each model is run for 500 epochs. 
 - Optuna is used for hyperparameter optimization. 
@@ -185,3 +195,11 @@ Notes about the models and naming conventions:
 - Experiments are labeled with var if they have non-standardized sampling rate across the dataset, else fixed. 
 - 2train refers to training on d3d and east, and testing on cmod. 3train refers to training on d3d, east, and cmod and testing on only cmod.
 - Just cmod refers to training _and_ testing on cmod. It's the same idea for the other models. 
+
+### Model:
+
+<img src="images/model.png" alt="Model" width="500"/>
+
+### Pipeline:
+
+<img src="images/pipeline.png" alt="Pipeline" width="500"/>
