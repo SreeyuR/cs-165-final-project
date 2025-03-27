@@ -108,7 +108,7 @@ class TrainingPipeline:
         if path:
             save_path = path
         else:
-            save_path = f'/groups/tensorlab/sratala/fno-disruption-pred/.checkpoints/checkpoints_{run_name}/checkpoint_epoch_500.pt'
+            save_path = f'/Users/u235567/Desktop/cs-165-final-project/.checkpoints/checkpoints_{run_name}/checkpoint_epoch_500.pt'
         
         if not self.trainer:
             checkpoint = torch.load(save_path, map_location=self.device)

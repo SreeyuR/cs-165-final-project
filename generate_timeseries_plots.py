@@ -27,7 +27,7 @@ def get_seq_to_label_dataset():
 
 # Function to get 10 indices for disruptive and non-disruptive shots
 
-def get_disruption_indices(dataset, dataset_name, num_samples=10, save_dir="/groups/tensorlab/sratala/fno-disruption-pred/datasets/indices", force_new_indices=False):
+def get_disruption_indices(dataset, dataset_name, num_samples=10, save_dir="/Users/u235567/Desktop/cs-165-final-project/datasets/indices", force_new_indices=False):
     """
     Ensures consistent selection of disruptive and non-disruptive indices across datasets.
     """
@@ -51,7 +51,7 @@ def get_disruption_indices(dataset, dataset_name, num_samples=10, save_dir="/gro
 
 SAMPLING_RATES = {"cmod": 5, "d3d": 10, "east": 25}  # in microseconds (multiply abobe by 10^3)
 
-def plot_shot_time_series(dataset, idx, dataset_name, save_dir="/groups/tensorlab/sratala/fno-disruption-pred/figs/time_series/FIXED_INTERVAL"):
+def plot_shot_time_series(dataset, idx, dataset_name, save_dir="/Users/u235567/Desktop/cs-165-final-project/figs/time_series/FIXED_INTERVAL"):
     """
     Plots the time series of all features for a given shot index using machine-specific time spacing.
 
@@ -104,7 +104,7 @@ def plot_shot_time_series(dataset, idx, dataset_name, save_dir="/groups/tensorla
     plt.savefig(f"{plot_dir}/{dataset_name}_shot_{idx}_timeseries_{dataset[idx]['label']}.png", bbox_inches="tight")
     plt.show()
 
-def plot_side_by_side_scaled_vs_non_scaled(scaled_dataset, non_scaled_dataset, idx, dataset_name, save_dir="/groups/tensorlab/sratala/fno-disruption-pred/figs/side_by_side_scaled"):
+def plot_side_by_side_scaled_vs_non_scaled(scaled_dataset, non_scaled_dataset, idx, dataset_name, save_dir="/Users/u235567/Desktop/cs-165-final-project/figs/side_by_side_scaled"):
     """
     Plots the time series of a given shot from both scaled and non-scaled datasets side by side.
     """
@@ -146,7 +146,7 @@ def plot_side_by_side_scaled_vs_non_scaled(scaled_dataset, non_scaled_dataset, i
     plt.savefig(f"{plot_dir}/{dataset_name}_shot_{idx}_side_by_side.png", bbox_inches="tight")
     plt.close()
 
-def plot_side_by_side_disruptions(dataset, dataset_name, save_dir="/groups/tensorlab/sratala/fno-disruption-pred/figs/time_series/comparison", extra_title="", force_new_indices=False, num_samples=5):
+def plot_side_by_side_disruptions(dataset, dataset_name, save_dir="/Users/u235567/Desktop/cs-165-final-project/figs/time_series/comparison", extra_title="", force_new_indices=False, num_samples=5):
     """
     Plots time series for 5 disruptive and 5 non-disruptive shots in a single large figure.
 
@@ -191,7 +191,7 @@ def plot_side_by_side_disruptions(dataset, dataset_name, save_dir="/groups/tenso
 
 
 if __name__ == "__main__":
-    config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/config_plot.yaml"
+    config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/config_plot.yaml"
     tp = TrainingPipeline(config_file_path)
     train_dataset, test_dataset, val_dataset = tp.train_dataset, tp.test_dataset, tp.val_dataset #, tp.eval_dataset , eval_dataset
 

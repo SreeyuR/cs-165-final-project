@@ -15,8 +15,8 @@ import evaluation
 from main import TrainingPipeline
 from optuna_funcs import create_objective, run_optuna_study
 
-#config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/ccnn/config_ccnn-optuna-test.yaml"
-config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/ccnn/config-ccnn-optiuna-all3.yaml"
+#config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/ccnn/config_ccnn-optuna-test.yaml"
+config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/ccnn/config-ccnn-optiuna-all3.yaml"
 study_name = 'A-NEW_CCNN_3_REACTORS_AUC_MAX' #'TEST-CCNN_3_REACTORS_AUC_MAX'  # also wandb run name
 wandb_proj_name = 'CORRECT-CCNN_Disruption_Tuning' # 'Test-CCNN_Disruption_Tuning' # 
 wandb_group_name = 'ccnn-tuning' # 'test-ccnn-tuning'  

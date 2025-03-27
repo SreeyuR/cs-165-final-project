@@ -15,8 +15,8 @@ import evaluation
 from main import TrainingPipeline
 from optuna_funcs import create_objective, run_optuna_study
 
-#config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/ccnn/config_ccnn-optuna-test.yaml"
-config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/ccnn/config_ccnn_2train_fixed.yaml"
+#config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/ccnn/config_ccnn-optuna-test.yaml"
+config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/ccnn/config_ccnn_2train_fixed.yaml"
 study_name = "A-2_TRAIN_CCNN_AUC_FIXED" # "TEST-CCNN_3_REACTORS_AUC_MAX"
 wandb_proj_name = 'CORRECT-CCNN_Disruption_Tuning' # 'Test-CCNN_Disruption_Tuning' # 
 wandb_group_name = '2train-ccnn-tuning' # 'test-ccnn-tuning'  

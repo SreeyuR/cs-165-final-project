@@ -15,7 +15,7 @@ import evaluation
 from main import TrainingPipeline
 from optuna_funcs import create_objective, run_optuna_study
 
-config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/transformer/config_transformer_2train_fixed.yaml" 
+config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/transformer/config_transformer_2train_fixed.yaml" 
 study_name = 'A-2TRAIN_TRANSFORMER_AUC_MAX' #'TEST-TRANSFORMER_3_REACTORS_AUC_MAX'
 wandb_proj_name = 'CORRECT-Transformer_Disruption_Tuning' #'Test-Transformer_Disruption_Tuning'
 wandb_group_name = '2train-transformer-tuning' # 'test-transformer-tuning'

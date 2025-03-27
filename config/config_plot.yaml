@@ -6,16 +6,16 @@ default: &DEFAULT
     name: "CHECK PLOTS AND SUMMARY STUFF" # If None, config will be used but you can override it here
     group: "fno-v1"
     files_to_save:
-      - "/groups/tensorlab/sratala/fno-disruption-pred/data.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/main.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/evaluation.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/model_params.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/model.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/plotting.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/printing.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/seq_to_label.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/seq_to_seq.py"
-      - "/groups/tensorlab/sratala/fno-disruption-pred/utils.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/data.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/main.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/evaluation.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/model_params.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/model.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/plotting.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/printing.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/seq_to_label.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/seq_to_seq.py"
+      - "/Users/u235567/Desktop/cs-165-final-project/utils.py"
   
   optuna: 
     use_optuna: False

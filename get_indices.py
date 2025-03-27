@@ -38,6 +38,6 @@ def main(raw_data):
         save_indices_csv(os.path.join(base_dir, 'test.csv'), test_idx, raw_data)
 
 if __name__ == "__main__":
-    data_obj = Data("/groups/tensorlab/sratala/fno-disruption-pred/config/config_data_generation.yaml")
+    data_obj = Data("/Users/u235567/Desktop/cs-165-final-project/config/config_data_generation.yaml")
     raw_data = data_obj.load_raw_data()
     main(raw_data)

@@ -25,7 +25,7 @@ exec >"$OUT_FILE" 2>"$ERR_FILE"
 
 # modifies the PYTHONPATH env var to include path /groups/tensorlab/sratala/neuraloperator to find neuraloperator
 # export PYTHONPATH="/groups/tensorlab/sratala/neuraloperator:$PYTHONPATH"
-/central/groups/tensorlab/sratala/fusion/bin/python /groups/tensorlab/sratala/fno-disruption-pred/optuna_transformer/optuna-transformer-cmod.py
+/Users/u235567/miniconda3/envs/fusion/bin/python  /Users/u235567/Desktop/cs-165-final-project/optuna_transformer/optuna-transformer-cmod.py
 
 # Start the Optuna dashboard in the background
 # nohup optuna-dashboard sqlite:///optuna_results.sqlite3 --port 8080 > dashboard.log 2>&1 &

@@ -162,30 +162,51 @@ git clone https://github.com/SreeyuR/cs-165-final-project.git
 cd cs-165-final-project
 ````
 
-### 2. Now run the following command to update hardcoded paths in the project, replacing `/new/user/global/path/` with the full global path to your local project directory.
-```bash
-python replace_path.py /path/to/project "/groups/tensorlab/sratala/fno-disruption-pred/" "/new/user/global/path/"
-```
-Setup environment:
+### 2.R Run a replace all operation, replacing all occurrences of `/Users/u235567/Desktop/cs-165-final-project/` with the full global path to your local project directory.
+Make sure this happens recursively, it is best to use an editor. 
 
+Setup environment:
 ```bash
-conda create -n myenv python=3.9
-conda activate myenv
+conda create -n fusion python=3.9
+conda activate fusion
 pip install -r requirements.txt
 ```
+Ensure you also have neuraloperator installed in your project directory. If not download it: https://github.com/neuraloperator/neuraloperator
 
-### 3. Download dataset into the project direcotry using this link: 
-https://drive.google.com/uc?export=download&id=1GE2odcanPqnufBQVrBOVlbyY7Rh59Au0
+
+If you don't see `(fusion)` on your terminal, run `conda activate fusion` again.
+
+Now do a replace all. Replace every instance of `/Users/u235567/miniconda3/envs/fusion/bin/python ` to the python path
+in your own python environment. Check if there is a way to do this with your text editor and manually recursively
+searching for every reference and replacing it on your own is hard. 
+
+Your python bin path will most likely be: `path/to/miniconda3/envs/fusion/bin/python` where you replace <path><to>
+with your global path to your miniconda environment.
+
+Next run the following to update your shell and set your python path explicitly:
+```bash
+export PYTHONPATH=~/Desktop/cs-165-final-project
+python run_root.py
+```
+
+### 3. Download the raw data into the project directory by running: 
+```bash
+python download_data.py
+```
+The data can also be found at this link: https://drive.google.com/uc?export=download&id=1GE2odcanPqnufBQVrBOVlbyY7Rh59Au0.
+Note that the data is 2.09GB.
 
 ### 4. Run an Experiment
 To run a specific experiment, use sbatch (or bash) to execute one of the job scripts in the bash_jobs/ directory. For example:
 ```bash
-sbatch bash_jobs/run_fno_experiment.sh
+sbatch bash_jobs/testing_scripts/fno/run-fno-cmod-test.sh
 ```
 Or if you’re running it directly without a job scheduler:
 ```bash
-bash bash_jobs/run_fno_experiment.sh
+bash bash_jobs/testing_scripts/fno/run-fno-cmod-test.sh
 ```
+
+If the run fails, copy the python run command from the script and run it manually. 
 
 ### Notes about the models and naming conventions:
 
@@ -203,3 +224,6 @@ bash bash_jobs/run_fno_experiment.sh
 ### Pipeline:
 
 <img src="images/pipeline.png" alt="Pipeline" width="500"/>
+
+Note that we only include one model checkpoint due to space limitations, but you are free to train your own models
+using this project, with the same setup :)

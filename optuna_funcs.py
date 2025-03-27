@@ -104,7 +104,7 @@ def run_optuna_study(
 
 if __name__ == "__main__":
     ##################################  PARAMS TO CHANGE ########################################################
-    config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/config_optuna_undersample.yaml"
+    config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/config_optuna_undersample.yaml"
     study_name = 'FNO_AUPRC_Maximization'
     metrics = ['auprc']
     directions = ['maximize']     # For multi-objective, provide a list of directions (one for each returned metric).

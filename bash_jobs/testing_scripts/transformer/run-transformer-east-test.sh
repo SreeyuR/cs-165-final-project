@@ -25,4 +25,4 @@ exec >"$OUT_FILE" 2>"$ERR_FILE"
 
 # modifies the PYTHONPATH env var to include path /groups/tensorlab/sratala/neuraloperator to find neuraloperator
 # export PYTHONPATH="/groups/tensorlab/sratala/neuraloperator:$PYTHONPATH"
-/central/groups/tensorlab/sratala/fusion/bin/python /groups/tensorlab/sratala/fno-disruption-pred/optuna_transformer/testing/transformer-east-test.py
+/Users/u235567/miniconda3/envs/fusion/bin/python  /Users/u235567/Desktop/cs-165-final-project/optuna_transformer/testing/transformer-east-test.py

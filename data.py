@@ -460,17 +460,17 @@ def save_load_datasets(tp, force_reload=False, save=True):
     
     # 0. GET DATASET INDICES
     if tp.config.data.case_number == 6:
-        dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_6"
+        dataset_dir = "/Users/u235567/Desktop/cs-165-final-project/datasets/case_6"
     elif tp.config.data.case_number == 8:
-        dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_8"
+        dataset_dir = "/Users/u235567/Desktop/cs-165-final-project/datasets/case_8"
     elif tp.config.data.case_number == 12:
-        dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_12"
+        dataset_dir = "/Users/u235567/Desktop/cs-165-final-project/datasets/case_12"
     elif tp.config.data.case_number == 1:
-        dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_1"
+        dataset_dir = "/Users/u235567/Desktop/cs-165-final-project/datasets/case_1"
     elif tp.config.data.case_number == 2:
-        dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_2"
+        dataset_dir = "/Users/u235567/Desktop/cs-165-final-project/datasets/case_2"
     elif tp.config.data.case_number == 3:
-        dataset_dir = "/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_3"
+        dataset_dir = "/Users/u235567/Desktop/cs-165-final-project/datasets/case_3"
     else:
         raise ValueError(f"Unknown case number: {tp.config.data.case_number}")
         
@@ -478,11 +478,11 @@ def save_load_datasets(tp, force_reload=False, save=True):
 
     # 1. SCALE DATASETS
     if tp.config.data.scaling_type == "none":
-        dataset_dir = f"/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_{tp.config.data.case_number}/no_scale"
+        dataset_dir = f"/Users/u235567/Desktop/cs-165-final-project/datasets/case_{tp.config.data.case_number}/no_scale"
     elif tp.config.data.scaling_type == "standard":
-        dataset_dir = f"/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_{tp.config.data.case_number}/standard_scale"
+        dataset_dir = f"/Users/u235567/Desktop/cs-165-final-project/datasets/case_{tp.config.data.case_number}/standard_scale"
     elif tp.config.data.scaling_type == "robust":
-        dataset_dir = f"/groups/tensorlab/sratala/fno-disruption-pred/datasets/case_{tp.config.data.case_number}/robust_scale"
+        dataset_dir = f"/Users/u235567/Desktop/cs-165-final-project/datasets/case_{tp.config.data.case_number}/robust_scale"
     else:
         raise ValueError(f"Unknown scaling type: {tp.config.data.scaling_type}")
     

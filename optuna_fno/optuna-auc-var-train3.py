@@ -22,8 +22,8 @@ from optuna_funcs import create_objective, run_optuna_study
 # os.environ['WANDB_DEBUG'] = 'true'
 # os.environ['WANDB_CORE_DEBUG'] = 'true'
 
-#config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/config_auc_optuna_all3.yaml" 
-config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/fno/config-variable-sampling-all3-fno.yaml"
+#config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/config_auc_optuna_all3.yaml" 
+config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/fno/config-variable-sampling-all3-fno.yaml"
 study_name = 'A-NEW_3Train-FNO-AUC-Maximization'
 addl_metric = False
 wandb_proj_name = "CORRECT-Variable-FNO-Disruption-Tuning"

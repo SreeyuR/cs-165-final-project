@@ -22,8 +22,8 @@ from optuna_funcs import create_objective, run_optuna_study
 # os.environ['WANDB_DEBUG'] = 'true'
 # os.environ['WANDB_CORE_DEBUG'] = 'true'
 
-#config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/config_auc_optuna_all3.yaml" 
-config_file_path = "/groups/tensorlab/sratala/fno-disruption-pred/config/fno/config_fno_2train_fixed.yaml"
+#config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/config_auc_optuna_all3.yaml" 
+config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/fno/config_fno_2train_fixed.yaml"
 study_name = 'A-2TRAIN_FIXED_FNO_AUC'
 addl_metric = True
 wandb_proj_name = "CORRECT-Fixed-FNO-Disruption-Tuning"
