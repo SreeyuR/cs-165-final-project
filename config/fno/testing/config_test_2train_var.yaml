@@ -53,7 +53,7 @@ default: &DEFAULT
     n_modes: 1
     hidden_channels: 50
     n_layers: 4
-    addl_metric: False
+    
     reg_to_class: # from regression to classification
       threshold: 0.6
       softmax_before_mean: False # if False, the softmax is done after mean

@@ -25,7 +25,7 @@ from optuna_funcs import create_objective, run_optuna_study
 #config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/config_auc_optuna_all3.yaml" 
 config_file_path = "/Users/u235567/Desktop/cs-165-final-project/config/fno/config_fno_2train_fixed.yaml"
 study_name = 'A-2TRAIN_FIXED_FNO_AUC'
-addl_metric = True
+
 wandb_proj_name = "CORRECT-Fixed-FNO-Disruption-Tuning"
 wandb_group_name = 'fixed-fno-tuning'
 metrics = ['auc_score']
@@ -100,7 +100,7 @@ else:
     
 # Create the objective function using the sampling function.
 # Set multi_objective=False if you want to perform single-objective optimization.
-objective_func = create_objective(config_file_path, sample_hyperparameters, metrics=metrics, study_name=study_name, wandbc=wandbc, addl_metric=addl_metric)
+objective_func = create_objective(config_file_path, sample_hyperparameters, metrics=metrics, study_name=study_name, wandbc=wandbc, )
 
 # Load additional configuration (e.g., number of trials and parallel jobs) from your config.
 config = load_config(config_folder="config", config_file=config_file_path, config_name="default", verbose=True)
@@ -113,7 +113,7 @@ study = run_optuna_study(
     n_trials=config.optuna.num_trials,
     n_jobs=config.optuna.num_jobs,
     wandbc=wandbc,
-    addl_metric=addl_metric,
+    
 )
 
 pruned_trials = study.get_trials(deepcopy=False, states=[TrialState.PRUNED])
@@ -124,7 +124,7 @@ print("  Number of finished trials:", len(study.trials))
 print("  Number of pruned trials:", len(pruned_trials))
 print("  Number of complete trials:", len(complete_trials))
 
-if len(metrics) > 1 or addl_metric: # multi objective study
+if len(metrics) > 1 : # multi objective study
     print("Best trials (Pareto front):")
     for trial in study.best_trials:
         print(f"  Trial {trial.number}:")
