@@ -138,7 +138,7 @@ All available shots from the three tokamaks (C-MOD, DIII-D, EAST) in the open-so
 
 - **Outlier removal**: All features were clipped at the 1st and 99th percentiles before any data splitting, removing extreme outliers from the dataset.
 - **Split-based filtering**: Shots were only included in training, validation, or test sets if they were referenced in the predefined case-specific index files located in `data/indices/`.
-- **No additional filtering**: Aside from percentile clipping and index-based selection, no samples were excluded from the original dataset.
+- **No additional filtering**: Aside from percentile clipping and index-based selection, no samples were excluded from the original dataset. However, shots are truncated based on interval length and the end cutoff timesteps.
 
 These preprocessing and filtering steps were designed to:
 
