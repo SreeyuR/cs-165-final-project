@@ -153,4 +153,14 @@ Steps to running models
 
 1. Clone
 2. run `python replace_path.py /path/to/project "/groups/tensorlab/sratala/fno-disruption-pred/" "/new/user/global/path/"` where you replace /new/user/global/path/ with the global path to your project directory. FOr example, mine was `/groups/tensorlab/sratala/fno-disruption-pred/`.
-3. 
+3. To run a specific experiment, do sbatch (or bash) path/to/batch/script in bash_jobs.
+
+
+Notes about the models
+
+Each model is run for 500 epochs. 
+Optuna is used for hyperparameter optimization. 
+For a comprehesive list of all the hyperparameters used, please see the config file associated with the experiment you are trying to find. 
+Experiments are labeled with var if they have non-standardized sampling rate across the dataset, else fixed. 
+2train refers to training on d3d and east, and testing on cmod. 3train refers to training on d3d, east, and cmod and testing on only cmod.
+Just cmod refers to training _and_ testing on cmod. It's the same idea for the other models. 
