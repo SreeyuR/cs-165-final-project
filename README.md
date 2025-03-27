@@ -147,20 +147,41 @@ These preprocessing and filtering steps were designed to:
 - Maintain **consistency and reproducibility** across experiments  
 - Enable **robust distributional learning** for predictive modeling
 
+# Running the Models
 
+Follow these steps to set up and run the models for the project.
 
-Steps to running models
+## 1. Clone the Repository
 
-1. Clone
-2. run `python replace_path.py /path/to/project "/groups/tensorlab/sratala/fno-disruption-pred/" "/new/user/global/path/"` where you replace /new/user/global/path/ with the global path to your project directory. FOr example, mine was `/groups/tensorlab/sratala/fno-disruption-pred/`.
-3. To run a specific experiment, do sbatch (or bash) path/to/batch/script in bash_jobs.
+First, clone the GitHub repository:
 
+```bash
+git clone https://github.com/SreeyuR/cs-165-final-project.git
+cd cs-165-final-project
+```
+## 2. Now run the following command to update hardcoded paths in the project, replacing `/new/user/global/path/` with the full global path to your local project directory.
+```bash
+python replace_path.py /path/to/project "/groups/tensorlab/sratala/fno-disruption-pred/" "/new/user/global/path/"
+```
 
-Notes about the models
+## 3. Download dataset into the project direcotry using this link: 
+https://drive.google.com/uc?export=download&id=1GE2odcanPqnufBQVrBOVlbyY7Rh59Au0
 
-Each model is run for 500 epochs. 
-Optuna is used for hyperparameter optimization. 
-For a comprehesive list of all the hyperparameters used, please see the config file associated with the experiment you are trying to find. 
-Experiments are labeled with var if they have non-standardized sampling rate across the dataset, else fixed. 
-2train refers to training on d3d and east, and testing on cmod. 3train refers to training on d3d, east, and cmod and testing on only cmod.
-Just cmod refers to training _and_ testing on cmod. It's the same idea for the other models. 
+## 4. Run an Experiment
+To run a specific experiment, use sbatch (or bash) to execute one of the job scripts in the bash_jobs/ directory. For example:
+```bash
+sbatch bash_jobs/run_fno_experiment.sh
+```
+Or if you’re running it directly without a job scheduler:
+```bash
+bash bash_jobs/run_fno_experiment.sh
+```
+
+Notes about the models and naming conventions:
+
+- Each model is run for 500 epochs. 
+- Optuna is used for hyperparameter optimization. 
+- For a comprehesive list of all the hyperparameters used, please see the config file associated with the experiment you are trying to find. 
+- Experiments are labeled with var if they have non-standardized sampling rate across the dataset, else fixed. 
+- 2train refers to training on d3d and east, and testing on cmod. 3train refers to training on d3d, east, and cmod and testing on only cmod.
+- Just cmod refers to training _and_ testing on cmod. It's the same idea for the other models. 
