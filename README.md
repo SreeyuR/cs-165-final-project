@@ -53,7 +53,8 @@ The preprocessing pipeline includes two stages: **global preprocessing (before t
 Before splitting the dataset into training, validation, and test sets, we apply a **clipping operation** on the raw data:
 
 - **All feature values are clipped at the 1st and 99th percentiles**.
-- This reduces the influence of extreme outliers and stabilizes the distributions.
+  - This reduces the influence of extreme outliers and stabilizes the distributions.
+- Normalize the data using mean and variance of the trianing dataset. 
 
 ### Per-Run Preprocessing
 
