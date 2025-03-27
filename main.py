@@ -100,11 +100,6 @@ class TrainingPipeline:
         self._setup_data()
         self._setup_model()
 
-        if self.config.training.addl_metric:
-            temp = self.val_dataset
-            self.val_dataset = self.test_dataset
-            self.test_dataset = temp 
-    
         print("~~~~~~~~~~~~~~~~~")
         print("Evaluating...")
         print("~~~~~~~~~~~~~~~~~")
@@ -174,8 +169,4 @@ class TrainingPipeline:
         return eval_metrics
 
 
-if __name__ == "__main__":
-    pipeline = TrainingPipeline("/groups/tensorlab/sratala/fno-disruption-pred/config/config_best_opt_params.yaml")
-    #pipeline.train()
-    pipeline.evaluate_loaded_model(run_name="Easy DP - Optuna Best Params v2")
 
