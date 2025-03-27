@@ -163,7 +163,8 @@ class TrainingPipeline:
         print('---------------------------')
         print("Test Dataset Metrics:")
         for key, value in eval_metrics.items():
-            print(f"  {key}: {value}")
+            if key == 'auc_score':
+                print(f"  {key}: {value}")
         print('---------------------------')
       
         return eval_metrics
