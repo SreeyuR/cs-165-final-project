@@ -134,8 +134,15 @@ Case 12 uses a split from prior work ([source](https://arxiv.org/abs/2401.00051)
 
 ## Data Inclusion / Exclusion
 
-All available shots from the three tokamaks (C-MOD, DIII-D, EAST) were included in the dataset. No shots were excluded unless explicitly filtered through the split indices described above. These splits were designed to:
+All available shots from the three tokamaks (C-MOD, DIII-D, EAST) in the open-sourced dataset were initially included. However, a small amount of filtering and cleaning was applied during preprocessing and splitting:
 
-- Preserve **class ratios** across splits  
+- **Outlier removal**: All features were clipped at the 1st and 99th percentiles before any data splitting, removing extreme outliers from the dataset.
+- **Split-based filtering**: Shots were only included in training, validation, or test sets if they were referenced in the predefined case-specific index files located in `data/indices/`.
+- **No additional filtering**: Aside from percentile clipping and index-based selection, no samples were excluded from the original dataset.
+
+These preprocessing and filtering steps were designed to:
+
+- Preserve **realistic class ratios** across splits  
 - Allow for **machine-specific** and **cross-machine generalization** studies  
-- Enable **realistic distribution learning** for predictive modeling
+- Maintain **consistency and reproducibility** across experiments  
+- Enable **robust distributional learning** for predictive modeling
