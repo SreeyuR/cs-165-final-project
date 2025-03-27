@@ -1,4 +1,4 @@
-# CS 165 Final Project
+# Neural Operators for Disruption Prediction in Nuclear Fusion Plasmas
 
 ## Dataset Overview
 
