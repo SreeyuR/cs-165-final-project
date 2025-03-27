@@ -146,3 +146,11 @@ These preprocessing and filtering steps were designed to:
 - Allow for **machine-specific** and **cross-machine generalization** studies  
 - Maintain **consistency and reproducibility** across experiments  
 - Enable **robust distributional learning** for predictive modeling
+
+
+
+Steps to running models
+
+1. Clone
+2. run `python replace_path.py /path/to/project "/groups/tensorlab/sratala/fno-disruption-pred/" "/new/user/global/path/"` where you replace /new/user/global/path/ with the global path to your project directory. FOr example, mine was `/groups/tensorlab/sratala/fno-disruption-pred/`.
+3. 
