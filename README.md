@@ -44,6 +44,36 @@ In the full dataset, **non-disruptive shots outnumber disruptive ones** by a rat
 
 ---
 
+## Data Preprocessing
+
+The preprocessing pipeline includes two stages: **global preprocessing (before train-test split)** and **per-run preprocessing (after data is loaded for a specific experiment)**.
+
+### Global Preprocessing
+
+Before splitting the dataset into training, validation, and test sets, we apply a **clipping operation** on the raw data:
+
+- **All feature values are clipped at the 1st and 99th percentiles**.
+- This reduces the influence of extreme outliers and stabilizes the distributions.
+
+### Per-Run Preprocessing
+
+After the dataset is split and saved to disk, each experimental run applies additional preprocessing steps depending on the configuration:
+
+- **Standardizing interval length**:  
+  Each shot is truncated or padded to match a fixed temporal length (defined per-machine or globally).
+  
+- **Undersampling the training set**:  
+  To address class imbalance, a configurable portion of non-disruptive shots may be undersampled during training.
+
+- **Data augmentation**:  
+  Additional transformations may be applied to augment training data. This includes resampling, masking, or injecting slight noise.
+
+- **Autoregressive cutoff**:  
+  A portion of the end of each time series may be **masked or removed** to simulate early warning prediction scenarios, forcing the model to infer disruptions from partial information.
+
+These steps allow us to simulate realistic use cases and robustly test the model’s generalization and early prediction ability.
+--
+
 ## Dataset Splits
 
 The dataset is split into **training**, **validation**, and **test** sets using pre-defined indices stored in the `data/indices/` directory. Each "case" file defines a different experimental setting:
